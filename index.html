@@ -66,15 +66,32 @@
         }
 
         .logo-container {
-            height: 48px;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .logo-container img {
-            height: 100%;
+            height: 48px;
             width: auto;
-            display: block;
+        }
+
+        .brand-block {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #f4f0f0;
+        }
+
+        .brand-slogan {
+            font-size: 11px;
+            color: #777;
+            letter-spacing: 0.3px;
         }
 
         .brand-title {
@@ -347,8 +364,11 @@
     <div class="container nav">
         <div class="nav-left">
             <div class="logo-container">
-                <!-- Replace image.png with your actual logo file path -->
-                <img src="image.png" alt="justvid logo">
+                <img src="justvid.png" alt="justvid logo">
+                <div class="brand-block">
+                    <span class="brand-title">JustVid</span>
+                    <span class="brand-slogan">Create More. Imagine More.</span>
+                </div>
             </div>
         </div>
         <nav class="nav-links">
