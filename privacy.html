@@ -2,57 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>justvid - Privacy Policy</title>
+    <title>NutApps - Privacy Policy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        :root {
+            --bg0: #020617;
+            --bg1: #0b102a;
+            --card: rgba(255, 255, 255, 0.04);
+            --card2: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.10);
+            --text: rgba(247, 250, 252, 0.96);
+            --muted: rgba(160, 174, 192, 0.92);
+            --accent: #4fd1c5;
+            --accent2: #a78bfa;
+            --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+            --radius: 18px;
+        }
+
         body {
             margin: 0;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #020617;
-            color: #f7fafc;
+            background:
+                    radial-gradient(1200px 600px at 10% -10%, rgba(79, 209, 197, 0.18), transparent 55%),
+                    radial-gradient(900px 500px at 90% 0%, rgba(167, 139, 250, 0.18), transparent 50%),
+                    linear-gradient(180deg, var(--bg1), var(--bg0));
+            color: var(--text);
+            color-scheme: dark;
         }
 
         a {
-            color: #4fd1c5;
+            color: var(--accent);
             text-decoration: none;
+            border-bottom: 1px solid rgba(79, 209, 197, 0.18);
+            transition: border-color 140ms ease, color 140ms ease;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: #7be7dd;
+            border-bottom-color: rgba(79, 209, 197, 0.55);
         }
 
         header {
-            border-bottom: 1px solid #2d3748;
-            background: #020617;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(2, 6, 23, 0.62);
+            backdrop-filter: blur(10px);
         }
 
         .container {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
-            padding: 0 16px;
+            padding: 0 18px;
         }
 
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 14px 0;
             font-size: 14px;
         }
 
         main {
-            padding: 24px 0 48px;
+            padding: 28px 0 56px;
         }
 
         h1 {
-            font-size: 26px;
-            margin-bottom: 6px;
+            font-size: 30px;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
         }
 
         .subtitle {
             font-size: 13px;
-            color: #a0aec0;
-            margin-bottom: 20px;
+            color: var(--muted);
+            margin-bottom: 18px;
         }
 
         h2 {
@@ -64,11 +87,11 @@
         p, li {
             font-size: 14px;
             line-height: 1.7;
-            color: #e2e8f0;
+            color: rgba(226, 232, 240, 0.94);
         }
 
         .muted {
-            color: #a0aec0;
+            color: var(--muted);
             font-size: 13px;
         }
 
@@ -76,11 +99,20 @@
             padding-left: 20px;
         }
 
+        header .nav strong {
+            font-size: 16px;
+            letter-spacing: 0.2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
         .footer {
-            border-top: 1px solid #2d3748;
-            padding: 16px 0 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px 0 30px;
             font-size: 13px;
-            color: #a0aec0;
+            color: var(--muted);
         }
 
         .footer-inner {
@@ -91,15 +123,21 @@
         }
 
         .policy-body {
-            border-radius: 16px;
-            border: 1px solid #2d3748;
-            padding: 20px 16px;
-            background: #020617;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 22px 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            box-shadow: var(--shadow);
         }
 
         .policy-body pre {
+            margin: 0;
             white-space: pre-wrap;
             word-wrap: break-word;
+            line-height: 1.75;
+            font-size: 13.5px;
+            color: rgba(226, 232, 240, 0.95);
+            font-family: inherit; /* keep legal text readable */
         }
 
         @media (max-width: 640px) {
@@ -108,6 +146,9 @@
                 align-items: flex-start;
                 gap: 8px;
             }
+            h1 {
+                font-size: 26px;
+            }
         }
     </style>
 </head>
@@ -115,7 +156,7 @@
 <header>
     <div class="container nav">
         <div>
-            <strong>justvid</strong>
+            <strong>NutApps</strong>
             <span class="muted"> · Privacy Policy</span>
         </div>
         <nav>
@@ -185,7 +226,7 @@ The Application will not sell or trade your personal information in any way with
 
 <footer class="footer">
     <div class="container footer-inner">
-        <div>© 2025 justvid / visio-core. All rights reserved.</div>
+        <div>© 2025 NutApps / visio-core. All rights reserved.</div>
         <div>
             <a href="privacy.html">Privacy Policy</a>
             &nbsp;·&nbsp;

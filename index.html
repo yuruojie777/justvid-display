@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NutApps - Apps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg0: #020617;
+            --bg1: #0b102a;
+            --text: rgba(247, 250, 252, 0.96);
+            --muted: rgba(160, 174, 192, 0.92);
+            --border: rgba(255, 255, 255, 0.12);
+            --accent: #4fd1c5;
+            --accent2: #a78bfa;
+            --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+            --radius: 18px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                    radial-gradient(1200px 600px at 10% -10%, rgba(79, 209, 197, 0.18), transparent 55%),
+                    radial-gradient(900px 500px at 90% 0%, rgba(167, 139, 250, 0.18), transparent 50%),
+                    linear-gradient(180deg, var(--bg1), var(--bg0));
+            color: var(--text);
+            color-scheme: dark;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 140ms ease, border-color 140ms ease;
+            border-bottom: 1px solid rgba(79, 209, 197, 0.18);
+        }
+
+        a:hover {
+            color: #7be7dd;
+            border-bottom-color: rgba(79, 209, 197, 0.55);
+        }
+
+        header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(2, 6, 23, 0.62);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            gap: 2px;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .brand-sub {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            font-size: 14px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        main {
+            padding: 34px 0 60px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 26px;
+            align-items: start;
+            margin-bottom: 26px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .hero-note {
+            padding: 14px 16px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            box-shadow: var(--shadow);
+        }
+
+        .hero-note .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(247, 250, 252, 0.92);
+            font-size: 12px;
+        }
+
+        .apps-title {
+            font-size: 18px;
+            margin: 18px 0 12px;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+
+        .app-card {
+            grid-column: span 6;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            box-shadow: var(--shadow);
+            padding: 16px 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background:
+                radial-gradient(400px 160px at 0% 0%, rgba(79, 209, 197, 0.18), transparent 55%),
+                radial-gradient(360px 140px at 100% 0%, rgba(167, 139, 250, 0.18), transparent 50%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .app-card-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 54px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(0, 0, 0, 0.12);
+            display: grid;
+            place-items: center;
+        }
+
+        .app-meta h3 {
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .app-meta p {
+            margin: 4px 0 0;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .app-actions a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(79, 209, 197, 0.35);
+            background: rgba(79, 209, 197, 0.08);
+            color: rgba(247, 250, 252, 0.96);
+            font-size: 13px;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+        }
+
+        .app-actions a:hover {
+            transform: translateY(-1px);
+            background: rgba(79, 209, 197, 0.14);
+            border-color: rgba(79, 209, 197, 0.55);
+        }
+
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px 0 30px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 860px) {
+            .hero { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .nav { flex-direction: column; align-items: flex-start; }
+            .nav-links { justify-content: flex-start; }
+            .app-card { grid-column: span 12; }
+            .hero h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container nav">
+                <div class="brand">
+            <div class="brand-title">NutApps</div>
+                <div class="brand-sub">AI apps from Nut AI Pty Ltd</div>
+        </div>
+        <nav class="nav-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <section class="hero" aria-label="NutApps hero">
+            <div>
+                <h1>Choose an app to try</h1>
+                <p>Simple, focused tools for video creation, color visualization, writing help, vocabulary building, and habit tracking.</p>
+                <div class="pill">Tap a card to open its App Store page</div>
+            </div>
+            <div class="hero-note">
+                <div class="row">
+                    <span class="pill">Available apps</span>
+                </div>
+                <div style="color: var(--muted); line-height: 1.7; font-size: 13px;">
+                    All apps are listed under the Nut AI developer page. If a name differs slightly from the App Store listing,
+                    the link still points to the correct product page.
+                </div>
+            </div>
+        </section>
+
+        <div class="apps-title">Available Apps</div>
+
+        <section class="apps-grid" aria-label="Apps grid">
+            <!-- JustVid -->
+            <div class="app-card">
+                <div class="app-card-inner">
+                    <div class="app-icon" aria-hidden="true">
+                        <svg width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="JustVid icon">
+                            <defs>
+                                <linearGradient id="g-jv" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0" stop-color="#4fd1c5"/>
+                                    <stop offset="1" stop-color="#a78bfa"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g-jv)" opacity="0.95"/>
+                            <path d="M23 22h18v4H23z" fill="rgba(255,255,255,0.85)"/>
+                            <path d="M23 30h26v4H23z" fill="rgba(255,255,255,0.85)"/>
+                            <path d="M23 38h18v4H23z" fill="rgba(255,255,255,0.85)"/>
+                            <circle cx="48" cy="44" r="10" fill="rgba(0,0,0,0.18)"/>
+                            <text x="48" y="49" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="800" fill="rgba(255,255,255,0.95)">JV</text>
+                        </svg>
+                    </div>
+                    <div class="app-meta">
+                        <h3>JustVid</h3>
+                        <p>One app, all AI video models—create videos from prompts fast.</p>
+                    </div>
+                    <div class="app-actions">
+                        <a href="https://apps.apple.com/us/app/justvid-ai-video-generator/id6751498543" target="_blank" rel="noopener noreferrer">App Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EzyPaint -->
+            <div class="app-card">
+                <div class="app-card-inner">
+                    <div class="app-icon" aria-hidden="true">
+                        <svg width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="EzyPaint icon">
+                            <defs>
+                                <linearGradient id="g-ep" x1="0" y1="1" x2="1" y2="0">
+                                    <stop offset="0" stop-color="#4fd1c5"/>
+                                    <stop offset="1" stop-color="#a78bfa"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g-ep)" opacity="0.95"/>
+                            <path d="M20 44c0-8 24-8 24 0" stroke="rgba(255,255,255,0.85)" stroke-width="4" stroke-linecap="round" fill="none"/>
+                            <circle cx="26" cy="30" r="6" fill="rgba(0,0,0,0.15)"/>
+                            <circle cx="38" cy="30" r="6" fill="rgba(255,255,255,0.25)"/>
+                            <text x="32" y="51" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="800" fill="rgba(255,255,255,0.95)">EP</text>
+                        </svg>
+                    </div>
+                    <div class="app-meta">
+                        <h3>EzyPaint</h3>
+                        <p>Try colors before you paint with AI color visualization.</p>
+                    </div>
+                    <div class="app-actions">
+                        <a href="https://apps.apple.com/us/app/ai-paint-color-visualizer/id6754727657" target="_blank" rel="noopener noreferrer">App Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gramma AI -->
+            <div class="app-card">
+                <div class="app-card-inner">
+                    <div class="app-icon" aria-hidden="true">
+                        <svg width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="Gramma AI icon">
+                            <defs>
+                                <linearGradient id="g-ga" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0" stop-color="#a78bfa"/>
+                                    <stop offset="1" stop-color="#4fd1c5"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g-ga)" opacity="0.95"/>
+                            <path d="M22 26h20v4H22z" fill="rgba(255,255,255,0.85)"/>
+                            <path d="M22 34h16v4H22z" fill="rgba(255,255,255,0.85)"/>
+                            <path d="M40 34l6 6" stroke="rgba(255,255,255,0.85)" stroke-width="4" stroke-linecap="round"/>
+                            <text x="32" y="51" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="800" fill="rgba(255,255,255,0.95)">GA</text>
+                        </svg>
+                    </div>
+                    <div class="app-meta">
+                        <h3>Gramma AI</h3>
+                        <p>AI grammar checker and writing improvements to help you sound better.</p>
+                    </div>
+                    <div class="app-actions">
+                        <a href="https://apps.apple.com/pl/app/gramma-ai-ai-grammar-checker/id6465576903" target="_blank" rel="noopener noreferrer">App Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vocab AI -->
+            <div class="app-card">
+                <div class="app-card-inner">
+                    <div class="app-icon" aria-hidden="true">
+                        <svg width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="Vocab AI icon">
+                            <defs>
+                                <linearGradient id="g-va" x1="0" y1="1" x2="1" y2="0">
+                                    <stop offset="0" stop-color="#a78bfa"/>
+                                    <stop offset="1" stop-color="#4fd1c5"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g-va)" opacity="0.95"/>
+                            <path d="M22 44V24h20v20" stroke="rgba(255,255,255,0.85)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            <path d="M26 28h12" stroke="rgba(255,255,255,0.85)" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M26 36h8" stroke="rgba(255,255,255,0.85)" stroke-width="4" stroke-linecap="round"/>
+                            <text x="32" y="51" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="800" fill="rgba(255,255,255,0.95)">VA</text>
+                        </svg>
+                    </div>
+                    <div class="app-meta">
+                        <h3>Vocab AI</h3>
+                        <p>Improve vocabulary with AI explanations, examples, and practice.</p>
+                    </div>
+                    <div class="app-actions">
+                        <a href="https://apps.apple.com/ca/app/vocab-ai-vocabulary-builder/id6462087450" target="_blank" rel="noopener noreferrer">App Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habitly -->
+            <div class="app-card">
+                <div class="app-card-inner">
+                    <div class="app-icon" aria-hidden="true">
+                        <svg width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="Habitly icon">
+                            <defs>
+                                <linearGradient id="g-hb" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0" stop-color="#4fd1c5"/>
+                                    <stop offset="1" stop-color="#a78bfa"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#g-hb)" opacity="0.95"/>
+                            <path d="M22 40l6 6 14-18" stroke="rgba(255,255,255,0.88)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <text x="32" y="26" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="800" fill="rgba(255,255,255,0.95)">HB</text>
+                        </svg>
+                    </div>
+                    <div class="app-meta">
+                        <h3>Habitly</h3>
+                        <p>Habit tracker with streaks, mood logging, and goal-focused routines.</p>
+                    </div>
+                    <div class="app-actions">
+                        <a href="https://apps.apple.com/rs/app/habitly-goal-mood-tracker/id6751553847" target="_blank" rel="noopener noreferrer">App Store</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <div>© 2025 NutApps / visio-core. All rights reserved.</div>
+        <div>
+            <a href="privacy.html">Privacy Policy</a>
+            &nbsp;·&nbsp;
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+
