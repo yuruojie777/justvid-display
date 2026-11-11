@@ -2,47 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>iMog — Face Scan & Attractiveness Score</title>
+    <title>iMog — Scan your face. Get your score.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="iMog placeholder landing page — scan your face, get your score, follow a short plan.">
+    <meta name="description" content="iMog: AI face scan, Attractiveness Score, and a personalized short-term plan.">
+    <link rel="icon" href="imog.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #05040a;
-            --bg-elevated: #0d0b14;
-            --panel: rgba(255, 255, 255, 0.035);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #f4f1fb;
-            --muted: rgba(214, 205, 232, 0.72);
-            --accent: #c4b0ff;
-            --accent-soft: rgba(196, 176, 255, 0.14);
-            --star: #f0c75e;
-            --radius: 22px;
+            --bg: #0B0D10;
+            --bg-elevated: #12151A;
+            --bg-muted: #1A1F27;
+            --border: #2A313C;
+            --mint: #30F2B2;
+            --violet: #968CEE;
+            --pink: #F68BBB;
+            --accent: #968CEE;
+            --accent-muted: #242038;
+            --text: #F3F5F7;
+            --muted: #9AA3B2;
+            --tertiary: #6B7380;
+            --warning: #F5C542;
             --max: 1080px;
-            --font-display: "Syne", "Manrope", system-ui, sans-serif;
-            --font-body: "Manrope", system-ui, sans-serif;
+            --brand-gradient: linear-gradient(90deg, #30F2B2 0%, #968CEE 50%, #F68BBB 100%);
         }
 
         * { box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
-            font-family: var(--font-body);
+            font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--text);
             background:
-                radial-gradient(900px 520px at 50% -10%, rgba(148, 112, 255, 0.22), transparent 60%),
-                radial-gradient(700px 420px at 80% 20%, rgba(88, 70, 180, 0.16), transparent 55%),
-                linear-gradient(180deg, #0a0714 0%, var(--bg) 40%, #030208 100%);
+                radial-gradient(900px 480px at 50% -8%, rgba(150, 140, 238, 0.16), transparent 58%),
+                radial-gradient(700px 420px at 10% 30%, rgba(48, 242, 178, 0.07), transparent 50%),
+                radial-gradient(680px 420px at 90% 20%, rgba(246, 139, 187, 0.08), transparent 52%),
+                var(--bg);
             min-height: 100vh;
         }
 
         a { color: inherit; text-decoration: none; }
         img { max-width: 100%; display: block; }
-        button, .btn { font: inherit; cursor: pointer; }
 
         .wrap {
             width: min(100% - 32px, var(--max));
@@ -52,9 +54,11 @@
         /* Nav */
         .nav-shell {
             position: sticky;
-            top: 14px;
-            z-index: 50;
-            padding-top: 8px;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(16px);
+            background: rgba(11, 13, 16, 0.78);
+            border-bottom: 1px solid rgba(42, 49, 60, 0.8);
         }
 
         .nav {
@@ -62,43 +66,30 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            padding: 10px 14px 10px 16px;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            background: rgba(8, 6, 14, 0.72);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+            min-height: 64px;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-family: var(--font-display);
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.04em;
         }
 
-        .brand-mark {
-            width: 28px;
-            height: 28px;
-            border-radius: 9px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(145deg, #d9cbff, #7d6bff);
-            color: #120e1d;
-            font-family: var(--font-display);
-            font-size: 11px;
-            font-weight: 800;
+        .brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 18px;
+            gap: 22px;
             color: var(--muted);
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .nav-links a:hover { color: var(--text); }
@@ -106,379 +97,403 @@
         .nav-cta {
             display: inline-flex;
             align-items: center;
-            padding: 8px 14px;
+            justify-content: center;
+            min-height: 40px;
+            padding: 0 16px;
             border-radius: 999px;
-            background: #fff;
-            color: #120e1d;
-            font-size: 12px;
-            font-weight: 600;
+            background: var(--brand-gradient);
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 800;
         }
 
         /* Hero */
         .hero {
-            padding: 54px 0 28px;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 36px;
+            align-items: center;
+            padding: 56px 0 28px;
         }
 
         .eyebrow {
             display: inline-flex;
-            gap: 8px;
             align-items: center;
-            margin-bottom: 18px;
-            color: var(--accent);
-            font-size: 11px;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--bg-muted);
+            color: var(--muted);
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .eyebrow i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--mint);
+            box-shadow: 0 0 12px rgba(48, 242, 178, 0.8);
         }
 
         .hero h1 {
-            margin: 0 auto 16px;
-            max-width: 15ch;
-            font-family: var(--font-display);
-            font-size: clamp(40px, 6.4vw, 68px);
+            margin: 0 0 14px;
+            font-size: clamp(36px, 5.4vw, 56px);
             font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.035em;
-        }
-
-        .hero h1 em {
-            font-style: normal;
-            color: var(--accent);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
         }
 
         .hero-lead {
-            margin: 0 auto 28px;
-            max-width: 42rem;
+            margin: 0 0 26px;
+            max-width: 34rem;
             color: var(--muted);
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 17px;
+            line-height: 1.55;
         }
 
         .cta-row {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            min-height: 46px;
-            padding: 0 20px;
+            min-height: 52px;
+            padding: 0 22px;
             border-radius: 999px;
-            border: 1px solid transparent;
-            transition: transform 140ms ease, opacity 140ms ease, background 140ms ease;
+            border: none;
+            font: inherit;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            transition: transform 140ms ease, opacity 140ms ease;
         }
 
-        .btn:hover { transform: translateY(-1px); }
+        .btn:hover { transform: translateY(-1px); opacity: 0.96; }
 
         .btn-primary {
-            background: #fff;
-            color: #120e1d;
-            font-weight: 600;
+            background: var(--brand-gradient);
+            color: var(--text);
+            box-shadow: 0 12px 32px rgba(150, 140, 238, 0.28);
         }
 
         .btn-ghost {
             background: transparent;
-            border-color: var(--border);
+            border: 1px solid var(--border);
             color: var(--text);
         }
 
-        .hero-note {
-            color: var(--muted);
-            font-size: 12px;
-            margin-bottom: 28px;
+        .hero-meta {
+            color: var(--tertiary);
+            font-size: 13px;
         }
 
-        .social-proof {
-            display: inline-flex;
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-frame {
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+            overflow: hidden;
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero-frame img {
+            width: 100%;
+            aspect-ratio: 1 / 1.05;
+            object-fit: cover;
+        }
+
+        .score-float {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            width: min(100% - 36px, 220px);
+            padding: 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: rgba(18, 21, 26, 0.88);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .score-float .label {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .score-row {
+            display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: var(--panel);
-            margin-bottom: 36px;
         }
 
-        .avatars {
-            display: flex;
-        }
-
-        .avatars span {
-            width: 28px;
-            height: 28px;
+        .score-ring {
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
-            border: 2px solid #120e1d;
-            margin-left: -8px;
-            background: linear-gradient(135deg, #6d5cff, #c9b8ff);
-        }
-
-        .avatars span:first-child { margin-left: 0; }
-        .avatars span:nth-child(2) { background: linear-gradient(135deg, #3e3558, #9f8dff); }
-        .avatars span:nth-child(3) { background: linear-gradient(135deg, #7a6bff, #f0e9ff); }
-
-        .stars { color: var(--star); letter-spacing: 1px; font-size: 12px; }
-        .rating-text { color: var(--muted); font-size: 12px; }
-
-        /* Phone placeholder */
-        .phone-stage {
-            position: relative;
-            width: min(100%, 420px);
-            margin: 0 auto;
-            padding-bottom: 8px;
-        }
-
-        .phone {
-            width: min(100%, 280px);
-            margin: 0 auto;
-            aspect-ratio: 9 / 18.5;
-            border-radius: 36px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.05), transparent 30%),
-                #12101b;
-            box-shadow:
-                0 30px 80px rgba(0, 0, 0, 0.55),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .phone-notch {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 96px;
-            height: 22px;
-            border-radius: 999px;
-            background: #05040a;
-            z-index: 2;
-        }
-
-        .phone-screen {
-            height: 100%;
-            padding: 48px 16px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            background:
-                radial-gradient(180px 160px at 50% 38%, rgba(168, 140, 255, 0.28), transparent 70%),
-                linear-gradient(180deg, #171326, #0b0912);
-        }
-
-        .phone-label {
-            text-align: center;
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .scan-orb {
-            width: 150px;
-            height: 150px;
-            margin: 18px auto 8px;
-            border-radius: 50%;
-            border: 1px dashed rgba(196, 176, 255, 0.45);
+            border: 3px solid var(--mint);
             display: grid;
             place-items: center;
-            color: var(--accent);
-            font-size: 12px;
-            text-align: center;
-            line-height: 1.4;
-            background: rgba(196, 176, 255, 0.06);
-        }
-
-        .score-card {
-            margin-top: auto;
-            padding: 12px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .score-card strong {
-            display: block;
-            font-family: var(--font-display);
-            font-size: 28px;
+            font-size: 18px;
             font-weight: 800;
             letter-spacing: -0.03em;
+            background: rgba(48, 242, 178, 0.08);
+            box-shadow: 0 0 24px rgba(48, 242, 178, 0.18);
+        }
+
+        .score-ring span {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .score-copy strong {
+            display: block;
+            font-size: 14px;
             margin-bottom: 2px;
         }
 
-        .score-card span {
+        .score-copy small {
             color: var(--muted);
             font-size: 12px;
-        }
-
-        .float-chip {
-            position: absolute;
-            left: 0;
-            top: 42%;
-            padding: 10px 12px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            background: rgba(10, 8, 16, 0.88);
-            backdrop-filter: blur(10px);
-            text-align: left;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        .float-chip small {
-            display: block;
-            color: var(--muted);
-            font-size: 10px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-
-        .float-chip strong {
-            font-family: var(--font-display);
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            line-height: 1.4;
         }
 
         /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 34px auto 10px;
-            padding: 18px 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            gap: 12px;
+            margin: 18px 0 8px;
+        }
+
+        .stat {
+            padding: 16px 14px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
             text-align: center;
         }
 
         .stat strong {
             display: block;
-            font-size: 12px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(244, 241, 251, 0.88);
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
             margin-bottom: 4px;
         }
 
         .stat span {
             color: var(--muted);
-            font-size: 11px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 500;
         }
 
         /* Sections */
-        section.block {
-            padding: 72px 0 24px;
+        .block {
+            padding: 72px 0 12px;
         }
 
         .section-head {
             max-width: 40rem;
-            margin: 0 auto 42px;
-            text-align: center;
+            margin: 0 0 28px;
         }
 
         .section-head h2 {
-            margin: 0 0 12px;
-            font-family: var(--font-display);
-            font-size: clamp(28px, 4.2vw, 42px);
-            font-weight: 700;
+            margin: 0 0 10px;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            letter-spacing: -0.035em;
             line-height: 1.12;
-            letter-spacing: -0.03em;
         }
 
         .section-head p {
             margin: 0;
             color: var(--muted);
-            line-height: 1.7;
-            font-size: 15px;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         .feature {
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 28px;
-            align-items: center;
-            margin-bottom: 28px;
-            padding: 22px;
-            border-radius: var(--radius);
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: stretch;
+            margin-bottom: 16px;
+            padding: 18px;
+            border-radius: 28px;
             border: 1px solid var(--border);
-            background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+            background: var(--bg-elevated);
         }
 
-        .feature.reverse { grid-template-columns: 0.95fr 1.05fr; }
-        .feature.reverse .feature-copy { order: 2; }
-        .feature.reverse .shot { order: 1; }
+        .feature.reverse .copy { order: 2; }
+        .feature.reverse .media { order: 1; }
+
+        .copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 18px 14px;
+        }
 
         .step {
             display: inline-flex;
-            margin-bottom: 12px;
-            color: var(--accent);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.14em;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            color: var(--violet);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
-        .feature h3 {
-            margin: 0 0 10px;
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.025em;
+        .step img {
+            width: 28px;
+            height: 28px;
         }
 
-        .feature p {
+        .copy h3 {
+            margin: 0 0 10px;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+
+        .copy p {
             margin: 0;
             color: var(--muted);
-            line-height: 1.7;
-            font-size: 14px;
+            font-size: 15px;
+            line-height: 1.65;
         }
 
-        .shot {
+        .media {
             min-height: 280px;
-            border-radius: 18px;
-            border: 1px dashed rgba(196, 176, 255, 0.35);
-            background:
-                radial-gradient(240px 160px at 50% 30%, rgba(196, 176, 255, 0.16), transparent 70%),
-                rgba(255, 255, 255, 0.02);
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            background: var(--bg-muted);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .media img.cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 280px;
+        }
+
+        .media.placeholder {
             display: grid;
             place-items: center;
             text-align: center;
             color: var(--muted);
-            padding: 20px;
-            font-size: 13px;
-            line-height: 1.5;
+            padding: 24px;
+            background:
+                radial-gradient(240px 160px at 50% 35%, rgba(150, 140, 238, 0.16), transparent 70%),
+                var(--bg-muted);
         }
 
-        .shot strong {
+        .media.placeholder strong {
             display: block;
             color: var(--text);
-            font-size: 14px;
             margin-bottom: 6px;
+        }
+
+        /* Dual score card */
+        .report-preview {
+            margin-top: 8px;
+            padding: 22px;
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+        }
+
+        .dual {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            gap: 18px;
+            align-items: start;
+            margin-bottom: 18px;
+        }
+
+        .dual-divider { background: var(--border); min-height: 88px; }
+
+        .hook .kicker {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .hook .value {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 6px;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hook .sub {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .pillar {
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: var(--bg-muted);
+        }
+
+        .pillar strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .pillar span {
+            color: var(--tertiary);
+            font-size: 12px;
         }
 
         /* FAQ */
         .faq-list {
-            max-width: 760px;
-            margin: 0 auto;
             display: grid;
             gap: 10px;
+            max-width: 760px;
         }
 
         details.faq {
             border: 1px solid var(--border);
             border-radius: 16px;
-            background: var(--panel);
+            background: var(--bg-elevated);
             padding: 16px 18px;
         }
 
@@ -486,7 +501,7 @@
             cursor: pointer;
             list-style: none;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         details.faq summary::-webkit-details-marker { display: none; }
@@ -495,46 +510,44 @@
             margin: 12px 0 0;
             color: var(--muted);
             font-size: 14px;
-            line-height: 1.7;
+            line-height: 1.65;
         }
 
-        /* CTA */
+        /* Final CTA */
         .final-cta {
-            margin: 56px 0 24px;
-            padding: 48px 24px;
+            margin: 56px 0 20px;
+            padding: 42px 24px;
             border-radius: 28px;
             border: 1px solid var(--border);
             background:
-                radial-gradient(500px 220px at 50% 0%, rgba(196, 176, 255, 0.18), transparent 65%),
-                rgba(255, 255, 255, 0.03);
+                radial-gradient(520px 220px at 50% 0%, rgba(150, 140, 238, 0.18), transparent 65%),
+                var(--bg-elevated);
             text-align: center;
         }
 
         .final-cta h2 {
-            margin: 0 0 10px;
-            font-family: var(--font-display);
-            font-size: clamp(28px, 4vw, 42px);
+            margin: 0 0 8px;
+            font-size: clamp(28px, 4vw, 40px);
             font-weight: 800;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.035em;
         }
 
         .final-cta p {
-            margin: 0 0 22px;
+            margin: 0 0 20px;
             color: var(--muted);
         }
 
-        /* Footer */
         footer {
-            padding: 28px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            color: var(--muted);
+            border-top: 1px solid var(--border);
+            padding: 22px 0 36px;
+            color: var(--tertiary);
             font-size: 13px;
         }
 
         .footer-inner {
             display: flex;
             justify-content: space-between;
-            gap: 16px;
+            gap: 14px;
             flex-wrap: wrap;
             align-items: center;
         }
@@ -547,209 +560,219 @@
 
         .footer-links a:hover { color: var(--text); }
 
-        .placeholder-tag {
+        .tag {
             display: inline-block;
             margin-left: 6px;
             padding: 2px 7px;
             border-radius: 999px;
-            border: 1px solid rgba(196, 176, 255, 0.35);
-            background: var(--accent-soft);
-            color: var(--accent);
+            border: 1px solid rgba(150, 140, 238, 0.45);
+            background: rgba(150, 140, 238, 0.12);
+            color: #c5bdf8;
             font-size: 10px;
-            letter-spacing: 0.08em;
+            font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             vertical-align: middle;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 900px) {
+            .hero,
             .feature,
             .feature.reverse {
                 grid-template-columns: 1fr;
             }
 
-            .feature.reverse .feature-copy,
-            .feature.reverse .shot { order: initial; }
+            .feature.reverse .copy,
+            .feature.reverse .media { order: initial; }
 
-            .float-chip { display: none; }
-
-            .stats { grid-template-columns: 1fr 1fr; gap: 16px; }
-
+            .stats { grid-template-columns: 1fr 1fr; }
+            .pillars { grid-template-columns: 1fr 1fr; }
             .nav-links { display: none; }
         }
 
-        @media (max-width: 520px) {
-            .hero { padding-top: 36px; }
-            .stats { grid-template-columns: 1fr; }
+        @media (max-width: 560px) {
+            .stats,
+            .pillars,
+            .dual {
+                grid-template-columns: 1fr;
+            }
+
+            .dual-divider { display: none; }
+            .score-float { position: static; width: auto; margin: 12px; }
         }
     </style>
 </head>
 <body>
     <div class="nav-shell">
-        <div class="wrap">
-            <header class="nav">
-                <a class="brand" href="#top" aria-label="iMog home">
-                    <span class="brand-mark">IM</span>
-                    iMog
-                </a>
-                <nav class="nav-links" aria-label="Primary">
-                    <a href="#how">How it works</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
-                </nav>
-                <a class="nav-cta" href="#download">Get App →</a>
-            </header>
+        <div class="wrap nav">
+            <a class="brand" href="#top">
+                <img src="imog.png" alt="iMog">
+                iMog
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#how">How it works</a>
+                <a href="#score">Your score</a>
+                <a href="#faq">FAQ</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+            <a class="nav-cta" href="#download">Get the app</a>
         </div>
     </div>
 
     <main id="top">
-        <section class="hero wrap">
-            <div class="eyebrow">Face Scan · Attractiveness Score</div>
-            <h1>Your face is a game you can <em>win.</em></h1>
-            <p class="hero-lead">
-                <!-- Placeholder copy -->
-                [Placeholder] Scan your face, get your Attractiveness Score, and follow a short daily plan built around what to improve next.
-                <span class="placeholder-tag">copy</span>
-            </p>
-
-            <div class="cta-row" id="download">
-                <a class="btn btn-primary" href="#">iOS →</a>
-                <a class="btn btn-ghost" href="#">Android →</a>
-            </div>
-            <div class="hero-note">Available on iOS & Android · links placeholder</div>
-
-            <div class="social-proof" aria-label="Ratings placeholder">
-                <div class="avatars" aria-hidden="true">
-                    <span></span><span></span><span></span>
+        <section class="wrap hero">
+            <div>
+                <div class="eyebrow"><i></i> AI Face Scan · Attractiveness Score</div>
+                <h1>Scan your face.<br>Get your score.</h1>
+                <p class="hero-lead">
+                    See your Attractiveness Score in seconds, plus what’s strong and what to improve —
+                    then follow a short plan built around your face.
+                </p>
+                <div class="cta-row" id="download">
+                    <a class="btn btn-primary" href="#">Download on App Store</a>
+                    <a class="btn btn-ghost" href="#how">See how it works</a>
                 </div>
-                <div class="stars">★★★★★</div>
-                <div class="rating-text">[4.x] · [x,xxx]+ ratings</div>
+                <div class="hero-meta">App Store link placeholder · Coming soon</div>
             </div>
 
-            <div class="phone-stage">
-                <aside class="float-chip">
-                    <small>Your Rank</small>
-                    <strong>Top [xx]%</strong>
-                </aside>
-                <div class="phone" aria-label="App screenshot placeholder">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen">
-                        <div class="phone-label">iMog Preview</div>
-                        <div class="scan-orb">Face Scan<br>Screenshot<br>Placeholder</div>
-                        <div class="score-card">
-                            <strong>[82] / 100</strong>
-                            <span>Attractiveness Score · placeholder</span>
+            <div class="hero-visual">
+                <div class="hero-frame">
+                    <img src="assets/hero-scan.jpg" alt="iMog face scan visual">
+                </div>
+                <aside class="score-float" aria-label="Score preview">
+                    <div class="label">Attractiveness Score</div>
+                    <div class="score-row">
+                        <div class="score-ring"><span>8.2</span></div>
+                        <div class="score-copy">
+                            <strong>Strong overall</strong>
+                            <small>Biggest opportunity: Jawline · placeholder</small>
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
+        </section>
 
-            <div class="stats" aria-label="Product stats placeholders">
-                <div class="stat">
-                    <strong>[xxx]</strong>
-                    <span>Facial Points</span>
-                </div>
-                <div class="stat">
-                    <strong>[x]</strong>
-                    <span>Trait Scores</span>
-                </div>
-                <div class="stat">
-                    <strong>[x]</strong>
-                    <span>Daily Habits</span>
-                </div>
-                <div class="stat">
-                    <strong>[x.x]★</strong>
-                    <span>App Store</span>
-                </div>
+        <section class="wrap">
+            <div class="stats" aria-label="Product highlights">
+                <div class="stat"><strong>Scan</strong><span>Front-face analysis</span></div>
+                <div class="stat"><strong>6</strong><span>Pillar breakdown</span></div>
+                <div class="stat"><strong>Daily</strong><span>Habit plan</span></div>
+                <div class="stat"><strong>Track</strong><span>Rescan progress</span></div>
             </div>
         </section>
 
         <section class="block wrap" id="how">
             <div class="section-head">
-                <h2>Most apps rate you once. iMog helps you improve.</h2>
+                <h2>Built around your face — not generic tips.</h2>
                 <p>
-                    [Placeholder] The score is the start, not the end. See what’s strong, what to improve, and follow a simple plan.
-                    <span class="placeholder-tag">copy</span>
+                    iMog turns one scan into a score, a clear breakdown, and a short-term plan you can actually follow.
                 </p>
             </div>
 
             <article class="feature">
-                <div class="feature-copy">
-                    <div class="step">01 — Scan</div>
+                <div class="copy">
+                    <div class="step"><img src="assets/camera_3d.png" alt=""> 01 — Scan</div>
                     <h3>Know exactly where you stand.</h3>
                     <p>
-                        [Placeholder] Upload or capture a front face photo. iMog returns an Attractiveness Score plus a clear breakdown of strengths and weak points.
+                        Capture or upload a front face photo. Get your Attractiveness Score plus what’s already working and what to improve next.
                     </p>
                 </div>
-                <div class="shot">
-                    <div>
-                        <strong>Screenshot Placeholder</strong>
-                        Replace with scan / score screen
-                    </div>
+                <div class="media">
+                    <img class="cover" src="assets/hero-scan.jpg" alt="Scan preview">
                 </div>
             </article>
 
             <article class="feature reverse">
-                <div class="feature-copy">
-                    <div class="step">02 — Plan</div>
-                    <h3>A short plan for your face.</h3>
+                <div class="copy">
+                    <div class="step"><img src="assets/clipboard_3d.png" alt=""> 02 — Plan</div>
+                    <h3>A plan tailored to your face.</h3>
                     <p>
-                        [Placeholder] Get a focused improvement plan based on your scan — not generic tips. Keep it short, daily, and trackable.
+                        We’ll build a short-term plan from your face scan — daily habits focused on your weak points, not a random checklist.
                     </p>
                 </div>
-                <div class="shot">
-                    <div>
-                        <strong>Screenshot Placeholder</strong>
-                        Replace with plan / habits screen
-                    </div>
+                <div class="media">
+                    <img class="cover" src="assets/hero-plan.jpg" alt="Plan preview">
                 </div>
             </article>
 
             <article class="feature">
-                <div class="feature-copy">
-                    <div class="step">03 — Progress</div>
-                    <h3>Rescan and see the change.</h3>
+                <div class="copy">
+                    <div class="step"><img src="assets/chart_3d.png" alt=""> 03 — Progress</div>
+                    <h3>Reach your full potential.</h3>
                     <p>
-                        [Placeholder] Come back, rescan, and compare progress over time so you can see what actually moved.
+                        Rescan over time, compare results, and see how your score and features move as you stick with the plan.
                     </p>
                 </div>
-                <div class="shot">
+                <div class="media placeholder">
                     <div>
-                        <strong>Screenshot Placeholder</strong>
-                        Replace with progress / compare screen
+                        <strong>Progress screenshot</strong>
+                        Replace with before / after or history UI
+                        <span class="tag">placeholder</span>
                     </div>
                 </div>
             </article>
         </section>
 
-        <section class="block wrap" id="faq">
+        <section class="block wrap" id="score">
             <div class="section-head">
-                <h2>Common Questions</h2>
-                <p>Short FAQ for now — easy to expand later.</p>
+                <h2>Current score. Potential score. Clear next steps.</h2>
+                <p>
+                    Inspired by the in-app report: Overall Attractiveness Score, Potential if you follow the plan, and a 6-pillar breakdown.
+                </p>
             </div>
 
+            <div class="report-preview">
+                <div class="dual">
+                    <div class="hook">
+                        <div class="kicker">Overall</div>
+                        <div class="value">8.2</div>
+                        <div class="sub">Attractiveness Score · placeholder</div>
+                    </div>
+                    <div class="dual-divider" aria-hidden="true"></div>
+                    <div class="hook">
+                        <div class="kicker">Potential</div>
+                        <div class="value">9.1</div>
+                        <div class="sub">If you follow the plan · placeholder</div>
+                    </div>
+                </div>
+                <div class="pillars">
+                    <div class="pillar"><strong>Symmetry</strong><span>Placeholder</span></div>
+                    <div class="pillar"><strong>Jawline</strong><span>Placeholder</span></div>
+                    <div class="pillar"><strong>Skin</strong><span>Placeholder</span></div>
+                    <div class="pillar"><strong>Eyes</strong><span>Placeholder</span></div>
+                    <div class="pillar"><strong>Structure</strong><span>Placeholder</span></div>
+                    <div class="pillar"><strong>Presence</strong><span>Placeholder</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="block wrap" id="faq">
+            <div class="section-head">
+                <h2>FAQ</h2>
+                <p>Short answers for now — easy to expand later.</p>
+            </div>
             <div class="faq-list">
                 <details class="faq" open>
                     <summary>What is iMog?</summary>
-                    <p>[Placeholder] iMog is an AI face scan app that gives you an Attractiveness Score and a short improvement plan.</p>
+                    <p>iMog is an AI face scan app that gives you an Attractiveness Score, a feature breakdown, and a personalized short-term improvement plan.</p>
                 </details>
                 <details class="faq">
                     <summary>Is my photo data safe?</summary>
-                    <p>[Placeholder] Photos are used for analysis. See the Privacy Policy for details. You can request deletion anytime.</p>
+                    <p>Photos are used to generate your analysis and plan. See the Privacy Policy for details. You can request deletion anytime.</p>
                 </details>
                 <details class="faq">
                     <summary>Is this medical advice?</summary>
-                    <p>[Placeholder] No. iMog is for informational self-improvement only and does not provide medical advice.</p>
+                    <p>No. iMog is for informational self-improvement only and does not provide medical advice, diagnosis, or treatment.</p>
                 </details>
             </div>
         </section>
 
         <section class="wrap">
             <div class="final-cta">
-                <h2>Scan. Improve. Repeat.</h2>
-                <p>[Placeholder] Free to start. Your score is waiting.</p>
-                <div class="cta-row">
-                    <a class="btn btn-primary" href="#download">Get iMog →</a>
+                <h2>Scan. Improve. Track.</h2>
+                <p>Start with one face scan. Your Attractiveness Score is waiting.</p>
+                <div class="cta-row" style="justify-content:center;">
+                    <a class="btn btn-primary" href="#download">Get iMog</a>
                     <a class="btn btn-ghost" href="privacy.html">Privacy Policy</a>
                 </div>
             </div>
