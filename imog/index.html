@@ -21,7 +21,8 @@
             --text: #F3F5F7;
             --muted: #9AA3B2;
             --tertiary: #6B7380;
-            --max: 960px;
+            --max: 1040px;
+            --page-pad: clamp(28px, 6vw, 72px);
             --brand-gradient: linear-gradient(90deg, #30F2B2 0%, #968CEE 50%, #F68BBB 100%);
         }
 
@@ -45,7 +46,7 @@
         img { max-width: 100%; display: block; }
 
         .wrap {
-            width: min(100% - 32px, var(--max));
+            width: min(calc(100% - (var(--page-pad) * 2)), var(--max));
             margin: 0 auto;
         }
 
