@@ -63,11 +63,11 @@
         }
 
         .nav {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            position: relative;
+            display: flex;
             align-items: center;
             gap: 12px;
-            min-height: 58px;
+            min-height: 62px;
             padding: 8px 10px 8px 16px;
             border-radius: 999px;
             border: 1px solid rgba(255, 255, 255, 0.14);
@@ -85,32 +85,36 @@
             align-items: center;
             gap: 10px;
             font-weight: 800;
-            font-size: 16px;
+            font-size: 18px;
             letter-spacing: 0.04em;
-            justify-self: start;
+            z-index: 1;
         }
 
         .brand img {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 10px;
         }
 
         .nav-links {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 6px;
             color: #fff;
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 800;
-            justify-self: center;
+            z-index: 1;
         }
 
         .nav-links a {
-            padding: 8px 14px;
+            padding: 10px 16px;
             border-radius: 999px;
             color: #fff;
+            font-size: 16px;
             font-weight: 800;
             transition: background 140ms ease, opacity 140ms ease;
         }
@@ -124,15 +128,16 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            justify-self: end;
-            min-height: 38px;
-            padding: 0 16px;
+            margin-left: auto;
+            min-height: 44px;
+            padding: 0 20px;
             border-radius: 999px;
             background: var(--brand-gradient);
             color: var(--text);
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 800;
             white-space: nowrap;
+            z-index: 1;
         }
 
         main {
@@ -283,8 +288,14 @@
 
         @media (max-width: 720px) {
             .grid { grid-template-columns: 1fr; }
-            .nav { grid-template-columns: 1fr auto; }
+            .nav-links {
+                position: static;
+                left: auto;
+                transform: none;
+                margin-left: auto;
+            }
             .nav-links a:not(.is-active) { display: none; }
+            .nav-cta { margin-left: 0; }
         }
     </style>
 </head>
