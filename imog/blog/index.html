@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>iMog Wiki — Guides & Face Scan Tips</title>
+    <title>iMog Blog — Looksmaxxing Guides</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="iMog Wiki: guides on face scanning, Attractiveness Score, glow-up plans, and improvement tips.">
+    <meta name="description" content="iMog Blog: guides on face scanning, Attractiveness Score, and glow-up tips.">
     <link rel="icon" href="../imog.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +17,10 @@
             --border: #2A313C;
             --mint: #30F2B2;
             --violet: #968CEE;
-            --pink: #F68BBB;
             --text: #F3F5F7;
             --muted: #9AA3B2;
             --tertiary: #6B7380;
-            --max: 1080px;
+            --max: 860px;
             --nav-max: 1240px;
             --page-pad: clamp(40px, 8vw, 96px);
             --brand-gradient: linear-gradient(90deg, #30F2B2 0%, #968CEE 50%, #F68BBB 100%);
@@ -36,7 +35,7 @@
             font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--text);
             background:
-                radial-gradient(820px 420px at 50% -12%, rgba(150, 140, 238, 0.16), transparent 58%),
+                radial-gradient(820px 420px at 50% -12%, rgba(150, 140, 238, 0.14), transparent 58%),
                 var(--bg);
             display: flex;
             flex-direction: column;
@@ -104,9 +103,6 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 800;
             z-index: 1;
         }
 
@@ -116,7 +112,7 @@
             color: #fff;
             font-size: 16px;
             font-weight: 800;
-            transition: background 140ms ease, opacity 140ms ease;
+            transition: background 140ms ease;
         }
 
         .nav-links a:hover,
@@ -142,125 +138,98 @@
 
         main {
             flex: 1;
-            padding: 40px 0 56px;
+            padding: 56px 0 64px;
         }
 
         .page-head {
-            max-width: 40rem;
-            margin-bottom: 28px;
+            text-align: center;
+            margin-bottom: 48px;
         }
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 14px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: var(--bg-muted);
-            color: var(--muted);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .eyebrow i {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--violet);
-            box-shadow: 0 0 12px rgba(150, 140, 238, 0.7);
-        }
-
-        h1 {
+        .page-head h1 {
             margin: 0 0 12px;
-            font-size: clamp(30px, 4.5vw, 44px);
+            font-size: clamp(34px, 5vw, 48px);
             font-weight: 800;
             letter-spacing: -0.035em;
             line-height: 1.1;
         }
 
-        .lead {
+        .page-head p {
             margin: 0;
             color: var(--muted);
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.55;
         }
 
-        .grid {
+        .section-label {
+            margin: 0 0 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-label span {
+            color: var(--tertiary);
+            font-weight: 600;
+        }
+
+        .post-list {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
+            gap: 18px;
         }
 
-        .card {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 18px;
-            border-radius: 20px;
+        .post {
+            display: grid;
+            grid-template-columns: 120px minmax(0, 1fr);
+            gap: 18px;
+            align-items: center;
+            padding: 6px;
+            border-radius: 18px;
+            transition: background 140ms ease;
+        }
+
+        .post:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .thumb {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
             border: 1px solid var(--border);
-            background: var(--bg-elevated);
-            transition: border-color 140ms ease, transform 140ms ease;
-        }
-
-        .card:hover {
-            border-color: rgba(150, 140, 238, 0.55);
-            transform: translateY(-1px);
-        }
-
-        .card .tag {
-            display: inline-flex;
-            width: fit-content;
-            padding: 4px 10px;
-            border-radius: 999px;
-            background: rgba(150, 140, 238, 0.12);
-            border: 1px solid rgba(150, 140, 238, 0.28);
-            color: #c5bdf8;
-            font-size: 11px;
+            background:
+                linear-gradient(145deg, rgba(48, 242, 178, 0.18), rgba(150, 140, 238, 0.22) 50%, rgba(246, 139, 187, 0.16)),
+                var(--bg-muted);
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            color: var(--muted);
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
-        .card h2 {
-            margin: 0;
-            font-size: 18px;
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-body h2 {
+            margin: 0 0 8px;
+            font-size: clamp(18px, 2.4vw, 22px);
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
+            line-height: 1.25;
         }
 
-        .card p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.55;
-            flex: 1;
-        }
-
-        .card .meta {
+        .post-date {
             color: var(--tertiary);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .empty {
-            grid-column: 1 / -1;
-            padding: 28px 20px;
-            border-radius: 20px;
-            border: 1px dashed rgba(150, 140, 238, 0.35);
-            background: rgba(18, 21, 26, 0.55);
-            color: var(--muted);
-            text-align: center;
             font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .empty strong {
-            display: block;
-            color: var(--text);
-            margin-bottom: 6px;
-            font-size: 15px;
+            font-weight: 600;
         }
 
         footer {
@@ -287,13 +256,24 @@
         .footer-links a:hover { color: var(--text); }
 
         @media (max-width: 720px) {
-            .grid { grid-template-columns: 1fr; }
+            .post {
+                grid-template-columns: 88px minmax(0, 1fr);
+                gap: 14px;
+            }
+
+            .thumb {
+                width: 88px;
+                height: 88px;
+                border-radius: 14px;
+            }
+
             .nav-links {
                 position: static;
                 left: auto;
                 transform: none;
                 margin-left: auto;
             }
+
             .nav-links a:not(.is-active) { display: none; }
             .nav-cta { margin-left: 0; }
         }
@@ -308,7 +288,7 @@
                     iMog
                 </a>
                 <nav class="nav-links" aria-label="Primary">
-                    <a class="is-active" href="./">Wiki</a>
+                    <a class="is-active" href="./">Blog</a>
                     <a href="../privacy.html">Privacy</a>
                     <a href="../terms.html">Terms</a>
                 </nav>
@@ -320,45 +300,22 @@
     <main>
         <div class="wrap">
             <div class="page-head">
-                <div class="eyebrow"><i></i> Wiki</div>
-                <h1>Guides for your glow-up.</h1>
-                <p class="lead">
-                    Short articles on face scanning, Attractiveness Score, and what to improve next.
-                    This is where traffic content lives.
-                </p>
+                <h1>Looksmaxxing Guides</h1>
+                <p>Science-backed methods to transform your appearance</p>
             </div>
 
-            <section class="grid" aria-label="Wiki articles">
-                <!-- Placeholder cards — replace href with real article pages -->
-                <a class="card" href="#">
-                    <span class="tag">Placeholder</span>
-                    <h2>How to take a good face scan photo</h2>
-                    <p>Front lighting, camera distance, and common mistakes that mess up your score.</p>
-                    <div class="meta">Coming soon</div>
-                </a>
-                <a class="card" href="#">
-                    <span class="tag">Placeholder</span>
-                    <h2>What your Attractiveness Score means</h2>
-                    <p>How overall score, potential, and the 6-pillar breakdown fit together.</p>
-                    <div class="meta">Coming soon</div>
-                </a>
-                <a class="card" href="#">
-                    <span class="tag">Placeholder</span>
-                    <h2>Build a short daily glow-up plan</h2>
-                    <p>Turn weak points into habits you can actually stick with for 7–14 days.</p>
-                    <div class="meta">Coming soon</div>
-                </a>
-                <a class="card" href="#">
-                    <span class="tag">Placeholder</span>
-                    <h2>How to track progress with rescans</h2>
-                    <p>When to rescan, what changed, and how to read Current vs Potential.</p>
-                    <div class="meta">Coming soon</div>
-                </a>
+            <h2 class="section-label">Face Scan & Score <span>(1)</span></h2>
 
-                <div class="empty">
-                    <strong>Add more Wiki posts here</strong>
-                    Drop new article HTML files into <code>imog/wiki/</code> and link them from this page.
-                </div>
+            <section class="post-list" aria-label="Blog posts">
+                <a class="post" href="#">
+                    <div class="thumb" aria-hidden="true">Placeholder</div>
+                    <div class="post-body">
+                        <h2>How to Take a Better Face Scan for Your Attractiveness Score</h2>
+                        <div class="post-date">
+                            <time datetime="2026-11-23">Nov 23, 2026</time>
+                        </div>
+                    </div>
+                </a>
             </section>
         </div>
     </main>
