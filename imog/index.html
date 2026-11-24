@@ -324,7 +324,7 @@
                 transform: none;
                 margin-left: auto;
             }
-            .nav-links a:not([href="blog/"]) { display: none; }
+            .nav-links a:not(.is-active):not([href="blog/"]) { display: none; }
             .nav-cta { margin-left: 0; }
         }
     </style>
@@ -338,6 +338,7 @@
                     iMog
                 </a>
                 <nav class="nav-links" aria-label="Primary">
+                    <a class="is-active" href="./">Home</a>
                     <a href="blog/">Blog</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="terms.html">Terms</a>
