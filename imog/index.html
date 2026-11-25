@@ -207,35 +207,24 @@
         .cta-row {
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             gap: 12px;
             margin-bottom: 12px;
         }
 
-        .btn {
+        .store-badge {
             display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-height: 52px;
-            padding: 0 22px;
-            border-radius: 999px;
-            border: 1px solid transparent;
-            font: inherit;
-            font-size: 15px;
-            font-weight: 800;
-            cursor: default;
             transition: transform 140ms ease, opacity 140ms ease;
         }
 
-        .btn-store {
-            background: #fff;
-            color: #0B0D10;
+        .store-badge:hover {
+            transform: translateY(-1px);
+            opacity: 0.92;
         }
 
-        .btn-store span {
-            opacity: 0.55;
-            font-size: 12px;
-            font-weight: 700;
+        .store-badge img {
+            height: 48px;
+            width: auto;
         }
 
         .note {
@@ -353,14 +342,14 @@
                     then follow a short plan built around your face.
                 </p>
                 <div class="cta-row" id="download">
-                    <a class="btn btn-store" href="#" aria-disabled="true">
-                        App Store <span>Coming Soon</span>
+                    <a class="store-badge" href="#" aria-label="Download on the App Store - Coming Soon">
+                        <img src="assets/download_appstore.png" alt="Download on the App Store">
                     </a>
-                    <a class="btn btn-store" href="#" aria-disabled="true">
-                        Play Store <span>Coming Soon</span>
+                    <a class="store-badge" href="#" aria-label="Get it on Google Play - Coming Soon">
+                        <img src="assets/download_googleplay.png" alt="Get it on Google Play">
                     </a>
                 </div>
-                <div class="note">即将上线 · Coming soon on iOS & Android</div>
+                <div class="note">Coming soon on iOS & Android</div>
             </div>
 
             <div class="mockup-stage">
