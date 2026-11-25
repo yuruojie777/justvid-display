@@ -312,6 +312,36 @@
         .feature.reverse .feature-copy { order: 2; }
         .feature.reverse .feature-visual { order: 1; }
 
+        .feature-copy,
+        .feature-visual {
+            opacity: 0;
+            transition:
+                opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        /* Outer → center: left column from left, right column from right */
+        .feature:not(.reverse) .feature-copy,
+        .feature.reverse .feature-visual {
+            transform: translateX(-56px);
+        }
+
+        .feature:not(.reverse) .feature-visual,
+        .feature.reverse .feature-copy {
+            transform: translateX(56px);
+        }
+
+        .feature-visual {
+            transition-delay: 0.08s;
+        }
+
+        .feature.is-in .feature-copy,
+        .feature.is-in .feature-visual {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         .feature-step {
             display: inline-flex;
             align-items: center;
@@ -418,6 +448,18 @@
                 order: initial;
             }
 
+            .feature:not(.reverse) .feature-copy,
+            .feature:not(.reverse) .feature-visual,
+            .feature.reverse .feature-copy,
+            .feature.reverse .feature-visual {
+                transform: translateY(28px);
+            }
+
+            .feature.is-in .feature-copy,
+            .feature.is-in .feature-visual {
+                transform: translateY(0);
+            }
+
             .feature-visual .mockup {
                 width: min(100%, 300px);
             }
@@ -483,7 +525,7 @@
         </div>
 
         <section class="wrap features" id="features" aria-label="Features">
-            <article class="feature">
+            <article class="feature reverse">
                 <div class="feature-copy">
                     <div class="feature-step">02 — Stand</div>
                     <h2>Know exactly where you stand.</h2>
@@ -504,7 +546,7 @@
                 </div>
             </article>
 
-            <article class="feature reverse">
+            <article class="feature">
                 <div class="feature-copy">
                     <div class="feature-step">03 — Plan</div>
                     <h2>A short plan for your face.</h2>
@@ -525,7 +567,7 @@
                 </div>
             </article>
 
-            <article class="feature">
+            <article class="feature reverse">
                 <div class="feature-copy">
                     <div class="feature-step">04 — Progress</div>
                     <h2>Rescan and watch yourself climb.</h2>
@@ -559,5 +601,28 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var items = document.querySelectorAll(".feature");
+            if (!items.length) return;
+
+            if (!("IntersectionObserver" in window)) {
+                items.forEach(function (el) { el.classList.add("is-in"); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-in");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.28, rootMargin: "0px 0px -8% 0px" });
+
+            items.forEach(function (el) { observer.observe(el); });
+        })();
+    </script>
 </body>
 </html>
