@@ -207,24 +207,56 @@
         .cta-row {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             margin-bottom: 12px;
         }
 
-        .store-badge {
+        .btn {
             display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 52px;
+            padding: 0 24px;
+            border-radius: 999px;
+            border: none;
+            font: inherit;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.02em;
             transition: transform 140ms ease, opacity 140ms ease;
         }
 
-        .store-badge:hover {
-            transform: translateY(-1px);
-            opacity: 0.92;
+        .btn-store {
+            background: #fff;
+            color: #0B0D10;
         }
 
-        .store-badge img {
-            height: 48px;
-            width: auto;
+        .btn-store:hover {
+            transform: translateY(-1px);
+            opacity: 0.94;
+        }
+
+        .store-inactive {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-store.is-inactive {
+            background: rgba(255, 255, 255, 0.14);
+            color: rgba(243, 245, 247, 0.42);
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .store-soon {
+            color: var(--tertiary);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
         }
 
         .note {
@@ -342,14 +374,12 @@
                     then follow a short plan built around your face.
                 </p>
                 <div class="cta-row" id="download">
-                    <a class="store-badge" href="#" aria-label="Download on the App Store - Coming Soon">
-                        <img src="assets/download_appstore.png" alt="Download on the App Store">
-                    </a>
-                    <a class="store-badge" href="#" aria-label="Get it on Google Play - Coming Soon">
-                        <img src="assets/download_googleplay.png" alt="Get it on Google Play">
-                    </a>
+                    <a class="btn btn-store" href="#">App Store →</a>
+                    <div class="store-inactive">
+                        <span class="btn btn-store is-inactive" aria-disabled="true">Play Store →</span>
+                        <span class="store-soon">Coming soon</span>
+                    </div>
                 </div>
-                <div class="note">Coming soon on iOS & Android</div>
             </div>
 
             <div class="mockup-stage">
