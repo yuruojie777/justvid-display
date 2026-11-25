@@ -37,9 +37,7 @@
             font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             color: var(--text);
             background:
-                radial-gradient(820px 420px at 50% -12%, rgba(150, 140, 238, 0.18), transparent 58%),
-                radial-gradient(560px 320px at 12% 40%, rgba(48, 242, 178, 0.07), transparent 55%),
-                radial-gradient(560px 320px at 88% 35%, rgba(246, 139, 187, 0.08), transparent 55%),
+                radial-gradient(820px 420px at 50% -12%, rgba(150, 140, 238, 0.14), transparent 58%),
                 var(--bg);
             display: flex;
             flex-direction: column;
@@ -157,6 +155,25 @@
             gap: 40px;
             align-items: center;
             width: 100%;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-copy-glow {
+            position: absolute;
+            left: 0;
+            top: 42%;
+            width: min(520px, 120%);
+            height: 320px;
+            transform: translateY(-20%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(48, 242, 178, 0.22), transparent 68%);
+            filter: blur(8px);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .eyebrow {
@@ -327,7 +344,8 @@
 
     <main>
         <div class="wrap hero">
-            <div>
+            <div class="hero-copy">
+                <div class="hero-copy-glow" aria-hidden="true"></div>
                 <div class="eyebrow">Face Scan · Attractiveness Score</div>
                 <h1>Scan your face.<br>Get your score.</h1>
                 <p class="lead">
