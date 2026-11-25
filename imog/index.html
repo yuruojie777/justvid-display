@@ -144,8 +144,6 @@
 
         main {
             flex: 1;
-            display: flex;
-            align-items: center;
             padding: 48px 0 64px;
         }
 
@@ -155,6 +153,7 @@
             gap: 40px;
             align-items: center;
             width: 100%;
+            min-height: min(72vh, 760px);
         }
 
         .hero-copy {
@@ -294,6 +293,83 @@
             height: auto;
         }
 
+        .features {
+            padding: 28px 0 40px;
+        }
+
+        .feature {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 48px;
+            align-items: center;
+            padding: 56px 0;
+        }
+
+        .feature.reverse {
+            grid-template-columns: 0.95fr 1.05fr;
+        }
+
+        .feature.reverse .feature-copy { order: 2; }
+        .feature.reverse .feature-visual { order: 1; }
+
+        .feature-step {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            color: var(--mint);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .feature-copy h2 {
+            margin: 0 0 14px;
+            font-size: clamp(28px, 3.6vw, 42px);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+        }
+
+        .feature-copy p {
+            margin: 0 0 20px;
+            max-width: 34rem;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        .feature-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 0 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(18, 21, 26, 0.72);
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .feature-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-visual .mockup {
+            width: min(100%, 340px);
+        }
+
         footer {
             border-top: 1px solid var(--border);
             padding: 18px 0 28px;
@@ -329,6 +405,22 @@
             }
 
             .mockup { width: min(100%, 300px); }
+
+            .feature,
+            .feature.reverse {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 36px 0;
+            }
+
+            .feature.reverse .feature-copy,
+            .feature.reverse .feature-visual {
+                order: initial;
+            }
+
+            .feature-visual .mockup {
+                width: min(100%, 300px);
+            }
 
             main { padding-top: 28px; }
 
@@ -389,6 +481,71 @@
                 </div>
             </div>
         </div>
+
+        <section class="wrap features" id="features" aria-label="Features">
+            <article class="feature">
+                <div class="feature-copy">
+                    <div class="feature-step">02 — Stand</div>
+                    <h2>Know exactly where you stand.</h2>
+                    <p>
+                        See your percentile, PSL band, and secondary traits in one clear report —
+                        so you know what’s strong and what to improve next.
+                    </p>
+                    <div class="feature-pills">
+                        <span class="pill">Percentile ranking</span>
+                        <span class="pill">Secondary traits</span>
+                        <span class="pill">Clear baseline</span>
+                    </div>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup">
+                        <img src="assets/2-whereyoustand.png" alt="iMog where you stand mockup">
+                    </div>
+                </div>
+            </article>
+
+            <article class="feature reverse">
+                <div class="feature-copy">
+                    <div class="feature-step">03 — Plan</div>
+                    <h2>A short plan for your face.</h2>
+                    <p>
+                        Turn weak points into a focused 7-day plan with simple daily habits —
+                        not vague tips, just what to do next.
+                    </p>
+                    <div class="feature-pills">
+                        <span class="pill">7-day plan</span>
+                        <span class="pill">Daily habits</span>
+                        <span class="pill">Add to Daily</span>
+                    </div>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup">
+                        <img src="assets/3-habits.png" alt="iMog habits plan mockup">
+                    </div>
+                </div>
+            </article>
+
+            <article class="feature">
+                <div class="feature-copy">
+                    <div class="feature-step">04 — Progress</div>
+                    <h2>Rescan and watch yourself climb.</h2>
+                    <p>
+                        Track Current vs Goal over time, keep your streak alive,
+                        and see the difference as your habits stick.
+                    </p>
+                    <div class="feature-pills">
+                        <span class="pill">Current → Goal</span>
+                        <span class="pill">Progress chart</span>
+                        <span class="pill">Perfect Day</span>
+                    </div>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup">
+                        <img src="assets/4-progress.png" alt="iMog progress mockup">
+                    </div>
+                </div>
+            </article>
+        </section>
     </main>
 
     <footer>
