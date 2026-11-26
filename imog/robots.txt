@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nutapps.com.au/sitemap.xml
+Sitemap: https://nutapps.com.au/imog/sitemap.xml
