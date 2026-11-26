@@ -236,6 +236,35 @@ main {
     border: 1px solid var(--border);
 }
 
+.content figure {
+    margin: 10px 0 26px;
+}
+
+.content figure img {
+    margin: 0;
+    width: 100%;
+}
+
+.content figure.fig-phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content figure.fig-phone img {
+    width: min(100%, 360px);
+    background: #000;
+}
+
+.content figcaption {
+    margin-top: 10px;
+    color: var(--tertiary);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+    text-align: center;
+}
+
 .content blockquote {
     margin: 22px 0;
     padding: 14px 18px;
