@@ -28,19 +28,67 @@
     <loc>https://nutapps.com.au/imog/blog/</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/looksmaxxing-for-beginners.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/how-to-rate-your-face-with-ai.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/how-to-calculate-psl-score.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/perfect-face-scan-photo.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/best-ai-face-rating-apps-2026.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/what-is-a-good-psl-score.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://nutapps.com.au/imog/blog/posts/psl-rating-guide.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/positive-vs-negative-canthal-tilt.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nutapps.com.au/imog/blog/posts/how-to-measure-facial-symmetry.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nutapps.com.au/imog/blog/posts/face-scan-photo.html</loc>
-    <lastmod>2026-11-23</lastmod>
+    <loc>https://nutapps.com.au/imog/blog/posts/what-are-hunter-eyes.html</loc>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nutapps.com.au/imog/privacy.html</loc>
