@@ -226,6 +226,12 @@ main {
     font-weight: 800;
 }
 
+.content .faq h3 {
+    margin: 28px 0 10px;
+    color: var(--mint);
+    font-size: 19px;
+}
+
 .content ul,
 .content ol {
     margin: 0 0 18px;
