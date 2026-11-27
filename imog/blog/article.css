@@ -232,6 +232,36 @@ main {
     font-size: 19px;
 }
 
+.content table {
+    width: 100%;
+    margin: 8px 0 24px;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.content th,
+.content td {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.content th {
+    background: rgba(48, 242, 178, 0.08);
+    color: var(--text);
+    font-weight: 800;
+}
+
+.content td {
+    color: var(--muted);
+}
+
+.content tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
 .content ul,
 .content ol {
     margin: 0 0 18px;
