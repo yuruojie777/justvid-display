@@ -253,15 +253,56 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+}
+
+.content figure.fig-phone .phone-frame {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(36px, 7vw, 64px) clamp(28px, 8vw, 96px);
+    border-radius: 22px;
+    background:
+        radial-gradient(520px 220px at 50% 20%, rgba(48, 242, 178, 0.12), transparent 70%),
+        #050607;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    box-shadow:
+        0 0 0 1px rgba(48, 242, 178, 0.28),
+        0 0 0 1px rgba(150, 140, 238, 0.12) inset,
+        0 18px 40px rgba(0, 0, 0, 0.35);
+    position: relative;
+}
+
+.content figure.fig-phone .phone-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(48, 242, 178, 0.75), rgba(150, 140, 238, 0.35), rgba(246, 139, 187, 0.28));
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
 }
 
 .content figure.fig-phone img {
-    width: min(100%, 360px);
-    background: #000;
+    width: min(100%, 300px);
+    background: transparent;
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .content figcaption {
-    margin-top: 10px;
+    margin-top: 12px;
     color: var(--tertiary);
     font-size: 13px;
     font-weight: 600;
